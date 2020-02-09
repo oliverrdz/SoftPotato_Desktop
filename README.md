@@ -1,5 +1,5 @@
 # Soft Potato
-Open source electrochemical simulator
+Open source electrochemistry simulator
 
 It simulates current transients for planar diffusion. Assumes R - e -> O, DR = DO and planar diffusion.
 
