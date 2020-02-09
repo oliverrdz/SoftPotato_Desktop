@@ -1,7 +1,7 @@
 # Soft Potato
 Open source electrochemistry simulator
 
-It simulates current transients for planar diffusion. Assumes R - e -> O, DR = DO and planar diffusion.
+It simulates current transients for planar diffusion. Assumes R - e -> O, DR = DO and planar diffusion. For mor information visit [Soft Potato](https://oliverrdz.xyz/?cat=17).
 
 It requires:
 + Python 3+
