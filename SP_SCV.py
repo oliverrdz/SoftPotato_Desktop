@@ -68,7 +68,7 @@ delta = np.sqrt(D*tMax) # diffusion layer thicness
 t = np.linspace(0,tMax,kMax) # s, time array
 x = np.linspace(0,6*delta,iMax)*1e4 # um, distance from electrode
 c = cBulk*C # mol/cm3, concentration as a function of time and distance
-iDim = iNorm*n*F*A*D*cBulk/delta # A, dimensional current
+iDim = iNorm*n*F*A*D*cBulk # A, dimensional current
 
 #### Plots
 plt.figure(1)
