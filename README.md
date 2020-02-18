@@ -10,5 +10,5 @@ It requires:
 
 ***
 Log:
-+ 08/Feb/2020: added SP_Cottrell.py and SP_SCV.py
 + 17/Feb/2020: added SP_CV.py
++ 08/Feb/2020: added SP_Cottrell.py and SP_SCV.py
