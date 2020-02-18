@@ -40,7 +40,6 @@ nFRT = n*F/(R*Temp)
 ## Simulation parameters
 DOR = DO/DR
 lamb = 0.45 # For the algorithm to be stable, lamb = dT/dX^2 < 0.5
-#dT = 1e-3 # time incement
 dT = dE # time increment = potential increment
 nT = int(1/dT) # number of time elements
 Xmax = 6*np.sqrt(nT*dT) # Infinite distance
@@ -74,7 +73,7 @@ for s in range(0,np.size(sr)):
 		for i in range(1,nX-1): # i = distance index
 			CR[i,k,s] = CR[i,k-1,s] + lamb*(CR[i+1,k-1,s] - 2*CR[i,k-1,s] + CR[i-1,k-1,s])
 			CO[i,k,s] = CO[i,k-1,s] + DOR*lamb*(CO[i+1,k-1,s] - 2*CO[i,k-1,s] + CO[i-1,k-1,s])
-		iNorm[k,s] = (CR[1,k,s] - CR[0,k,s])/dX
+		iNorm[k,s] = (CR[1,k,s] - CR[0,k,s])/dX # Adimensional current
 
 delta = np.sqrt(DR*(Efin-Eini)/sr) # diffusion layer thickness for each scan rate
 iDim = iNorm*n*F*A*DR*CRb/delta # Convert to dimensional current
