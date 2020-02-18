@@ -49,7 +49,7 @@ nX = int(Xmax/dX) # number of distance elements
 nsr = np.size(sr) # number of scan rates
 
 ## Discretisation of variables and initialisation
-CR = np.ones([nX,nT*2,nsr]) # Initial condition for R
+CR = np.ones([nX,nT*2,nsr]) # Initial condition for R, nT*2 refers to two sweeps
 CO = np.zeros([nX,nT*2,nsr]) # Initial condition fo O
 X = np.linspace(0,Xmax,nX) # Discretisation of distance
 T = np.linspace(0,1,nT*2) # Discretisation of time
