@@ -39,23 +39,24 @@ nFRT = n*F/(R*Temp)
 
 ## Simulation parameters
 DOR = DO/DR
-lamb = 0.45
+lamb = 0.45 # For the algorithm to be stable, lamb = dT/dX^2 < 0.5
 #dT = 1e-3 # time incement
 dT = dE # time increment = potential increment
 nT = int(1/dT) # number of time elements
 Xmax = 6*np.sqrt(nT*dT) # Infinite distance
 dX = np.sqrt(dT/lamb) # distance increment
 nX = int(Xmax/dX) # number of distance elements
-nsr = np.size(sr)
+nsr = np.size(sr) # number of scan rates
 
-## Discretisation of variables
+## Discretisation of variables and initialisation
 CR = np.ones([nX,nT*2,nsr]) # Initial condition for R
 CO = np.zeros([nX,nT*2,nsr]) # Initial condition fo O
-X = np.linspace(0,Xmax,nX)
-T = np.linspace(0,1,nT*2)
-iNorm = np.zeros([nT*2,nsr])
+X = np.linspace(0,Xmax,nX) # Discretisation of distance
+T = np.linspace(0,1,nT*2) # Discretisation of time
 
+## Creating empty arrays
 tMax = np.zeros([nsr])
+iNorm = np.zeros([nT*2,nsr])
 E = np.zeros([nT*2,nsr])
 eps = np.zeros([nT*2,nsr])
 
@@ -70,14 +71,13 @@ for s in range(0,np.size(sr)):
 	for k in range(1,nT*2): # k = time index
 		CR[0,k,s] = (CR[1,k-1,s]+DOR*CO[1,k-1,s])/(1+np.exp(eps[k,s]))
 		CO[0,k,s] = CR[0,k,s]*np.exp(eps[k,s])
-	
 		for i in range(1,nX-1): # i = distance index
 			CR[i,k,s] = CR[i,k-1,s] + lamb*(CR[i+1,k-1,s] - 2*CR[i,k-1,s] + CR[i-1,k-1,s])
 			CO[i,k,s] = CO[i,k-1,s] + DOR*lamb*(CO[i+1,k-1,s] - 2*CO[i,k-1,s] + CO[i-1,k-1,s])
 		iNorm[k,s] = (CR[1,k,s] - CR[0,k,s])/dX
 
-delta = np.sqrt(DR*(Efin-Eini)/sr) # diffusion layer thickness
-iDim = iNorm*n*F*A*DR*CRb/delta
+delta = np.sqrt(DR*(Efin-Eini)/sr) # diffusion layer thickness for each scan rate
+iDim = iNorm*n*F*A*DR*CRb/delta # Convert to dimensional current
 
 iPkAn = np.max(iDim[5:-1,:],0) # Anodic simulated peak current
 iPkCa = np.min(iDim[5:-1,:],0) # Cathodic simulated peak current
@@ -106,5 +106,4 @@ plt.plot(np.sqrt(sr), iPkAn*1e3, '-o', np.sqrt(sr), iPkCa*1e3, '-o')
 plt.xlabel("$sr^{1/2}$ / V$^{1/2}$ s$^{-1/2}$")
 plt.ylabel("$i_{peak}$ / mA")
 plt.grid()
-
 plt.show()
