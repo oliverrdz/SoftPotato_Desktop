@@ -1,3 +1,20 @@
+#### Nernstian CV simulated with finite differences
+'''
+    Copyright (C) 2020 Oliver Rodriguez
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+'''
+#### @author oliverrdz
+#### https://oliverrdz.xyz
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -44,7 +61,7 @@ eps = np.zeros([nT*2,nsr])
 
 ## Iterate over scan rate
 for s in range(0,np.size(sr)):
-	## Creating waveform
+	## Creating waveform, only one cycle
 	tMax[s] = (Efin-Eini)/sr[s] # s, maximum time
 	E[:,s] = np.concatenate([Eini + sr[s]*np.linspace(0,tMax[s],nT), Efin-sr[s]*np.linspace(0,tMax[s],nT)]) # V, potential waveform
 	eps[:,s] = (E[:,s]-E0)*nFRT # adimensional potential waveform
@@ -62,8 +79,8 @@ for s in range(0,np.size(sr)):
 delta = np.sqrt(DR*(Efin-Eini)/sr) # diffusion layer thickness
 iDim = iNorm*n*F*A*DR*CRb/delta
 
-iPkAn = np.max(iDim,0) # Anodic simulated peak current
-iPkCa = np.min(iDim,0) # Cathodic simulated peak current
+iPkAn = np.max(iDim[5:-1,:],0) # Anodic simulated peak current
+iPkCa = np.min(iDim[5:-1,:],0) # Cathodic simulated peak current
 iRS = 2.69e5*A*np.sqrt(DR)*CRb*np.sqrt(sr) # Randles-Sevcik
 error = (1-iRS/iPkAn)*100
 
@@ -91,44 +108,3 @@ plt.ylabel("$i_{peak}$ / mA")
 plt.grid()
 
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
