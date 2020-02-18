@@ -8,8 +8,7 @@ It requires:
 + Numpy
 + Matplotlib
 
-Tested in Debian 10 buster
-
 ***
 Log:
 + 08/Feb/2020: added SP_Cottrell.py and SP_SCV.py
++ 17/Feb/2020: added SP_CV.py
