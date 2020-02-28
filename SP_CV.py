@@ -19,7 +19,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ## User parameters
-sr = np.array([0.001, 0.01, 0.1,1]) # V/s, scan rate
+fileName = "1mVs_ks1e3_a05" # Name to save the data
+save = True # False to prevent saving
+ks = 1e3 # standard rate constant
+alpha = 0.5 # Transfer coefficient
+sr = 0.001 # V/s, scan rate
 Eini = -0.5 # V, initial potential
 Efin = 0.5 # V, final potential
 dE = 0.005 # V, potential increment
@@ -45,64 +49,50 @@ nT = int(1/dT) # number of time elements
 Xmax = 6*np.sqrt(nT*dT) # Infinite distance
 dX = np.sqrt(dT/lamb) # distance increment
 nX = int(Xmax/dX) # number of distance elements
-nsr = np.size(sr) # number of scan rates
 
 ## Discretisation of variables and initialisation
-CR = np.ones([nX,nT*2,nsr]) # Initial condition for R, nT*2 refers to two sweeps
-CO = np.zeros([nX,nT*2,nsr]) # Initial condition fo O
+CR = np.ones([nX,nT*2]) # Initial condition for R, nT*2 refers to two sweeps
+CO = np.zeros([nX,nT*2]) # Initial condition fo O
 X = np.linspace(0,Xmax,nX) # Discretisation of distance
 T = np.linspace(0,1,nT*2) # Discretisation of time
-
-## Creating empty arrays
-tMax = np.zeros([nsr])
-iNorm = np.zeros([nT*2,nsr])
-E = np.zeros([nT*2,nsr])
-eps = np.zeros([nT*2,nsr])
-
-## Iterate over scan rate
-for s in range(0,np.size(sr)):
-	## Creating waveform, only one cycle
-	tMax[s] = (Efin-Eini)/sr[s] # s, maximum time
-	E[:,s] = np.concatenate([Eini + sr[s]*np.linspace(0,tMax[s],nT), Efin-sr[s]*np.linspace(0,tMax[s],nT)]) # V, potential waveform
-	eps[:,s] = (E[:,s]-E0)*nFRT # adimensional potential waveform
-
-	## Finite differences
-	for k in range(1,nT*2): # k = time index
-		CR[0,k,s] = (CR[1,k-1,s]+DOR*CO[1,k-1,s])/(1+np.exp(eps[k,s]))
-		CO[0,k,s] = CR[0,k,s]*np.exp(eps[k,s])
-		for i in range(1,nX-1): # i = distance index
-			CR[i,k,s] = CR[i,k-1,s] + lamb*(CR[i+1,k-1,s] - 2*CR[i,k-1,s] + CR[i-1,k-1,s])
-			CO[i,k,s] = CO[i,k-1,s] + DOR*lamb*(CO[i+1,k-1,s] - 2*CO[i,k-1,s] + CO[i-1,k-1,s])
-		iNorm[k,s] = (CR[1,k,s] - CR[0,k,s])/dX # Adimensional current
-
+iNorm = np.zeros([nT*2])
+tMax = (Efin-Eini)/sr # s, maximum time
+E = np.concatenate([Eini + sr*np.linspace(0,tMax,nT), Efin-sr*np.linspace(0,tMax,nT)])
+eps = (E-E0)*nFRT # adimensional potential waveform
 delta = np.sqrt(DR*(Efin-Eini)/sr) # diffusion layer thickness for each scan rate
+K0 = ks*delta/DR
+
+## Finite differences
+for k in range(1,nT*2): # k = time index
+	CR[0,k] = (CR[1,k-1] + dX*K0*np.exp(-alpha*eps[k])*(CO[1,k-1] + CR[1,k-1]/DOR))/(1 + dX*K0*(np.exp((1-alpha)*eps[k]) +np.exp(-alpha*eps[k]/DOR)))
+	CO[0,k] = CO[1,k-1] + (CR[1,k-1] - CR[0,k])/DOR
+	for i in range(1,nX-1): # i = distance index
+		CR[i,k] = CR[i,k-1] + lamb*(CR[i+1,k-1] - 2*CR[i,k-1] + CR[i-1,k-1])
+		CO[i,k] = CO[i,k-1] + DOR*lamb*(CO[i+1,k-1] - 2*CO[i,k-1] + CO[i-1,k-1])
+	iNorm[k] = (CR[1,k] - CR[0,k])/dX # Adimensional current
+
 iDim = iNorm*n*F*A*DR*CRb/delta # Convert to dimensional current
 
-iPkAn = np.max(iDim[5:-1,:],0) # Anodic simulated peak current
-iPkCa = np.min(iDim[5:-1,:],0) # Cathodic simulated peak current
+iPkAn = np.max(iDim,0) # Anodic simulated peak current
 iRS = 2.69e5*A*np.sqrt(DR)*CRb*np.sqrt(sr) # Randles-Sevcik
 error = (1-iRS/iPkAn)*100
 
-print("Scan rates V/s:")
+print("Scan rate V/s:")
 print(sr)
-print("Simulated peak currents:")
+print("Simulated peak current:")
 print(iPkAn)
 print("Randles-Sevcik currents:")
 print(iRS)
-print("Error / %")
+print("Error / %:")
 print(error)
+
+if save == True:
+	np.savetxt("iE_" + fileName + ".txt", np.column_stack((E, iDim)), delimiter = ",", header = "E / V, i / A")
 
 ## Plotting
 plt.figure(1)
-plt.subplot(1,2,1)
 fig = plt.plot(E, iDim*1e3)
-plt.legend(fig, ["0.001 V s$^{-1}$", "0.01 V s$^{-1}$", "0.1 V s$^{-1}$", "1 V s$^{-1}$"])
 plt.xlabel("$E$ / V")
 plt.ylabel("$i$ / mA")
-plt.grid()
-plt.subplot(1,2,2)
-plt.plot(np.sqrt(sr), iPkAn*1e3, '-o', np.sqrt(sr), iPkCa*1e3, '-o')
-plt.xlabel("$sr^{1/2}$ / V$^{1/2}$ s$^{-1/2}$")
-plt.ylabel("$i_{peak}$ / mA")
 plt.grid()
 plt.show()
