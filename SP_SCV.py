@@ -1,4 +1,4 @@
-#### Nernstian SCV simulated with finite differences
+#### Butler-Volmer SCV simulated with finite differences
 '''
     Copyright (C) 2020 Oliver Rodriguez
 
@@ -15,73 +15,76 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
-#### It assumes an oxidation process and that DR = RO, 
+#### It assumes an oxidation process, 
 #### @author oliverrdz
 #### https://oliverrdz.xyz
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-#### Experimental parameters that can be changed:
-tMax = 1 # s, total time
-A = 1 # cm2, electrode geometrical area
-cBulk = 5e-6 # mol/cm3, bulk concentration of the species
-D = 1e-5 # cm2/s, diffusion coefficient, assumes DO = DR
-n = 1 # number of electrons
+## User parameters
+fileName = "fileName" # Name to save the data, I suggest using parameters
+save = False # False to prevent saving
+ks = 1e-3 # standard rate constant
+alpha = 0.5 # Transfer coefficient
+Eini = -0.3 # V, initial potential
+Efin = 0.5 # V, final potential
+dE = 0.005 # V, potential increment
+tMax = 1 # s, maximum time
+E0 = 0 # V, equilibrium potential
+DO = 1e-5 # cm/s, diffusion coefficient of species O
+DR = 1e-5 # cm/s, diffusion coefficient of species R
+COb = 0 # mol/cm3, concentration of species O
+CRb = 5e-6 # mol/cm3, concentration of species R
+A = 1 # cm2, electrode area
+
+## Electrochemistry constants
+n = 1 # Number of electrons
 F = 96485 # C/mol, Faraday constant
 R = 8.315 # J/mol K, Gas constant
-T = 298 # K, temperature
-E0 = 0 # V, Equilibrium potential
-dE = 0.01 # V, Potential increments
-Eini = -0.2 # V, Initial potential
-Efin = 0.2 # V, Final potential
+Temp = 298 # K, Temperature
+nFRT = n*F/(R*Temp)
 
-#### Simulation parameters, change if needed:
-nk = 100 # number of time divisions per second
-kMax = tMax*nk # number of time elements in total
-lamb = 0.45 # lamb = dT/dX²
-dt = 1/kMax
-dX = np.sqrt(dt/lamb)
-iMax = int(6*np.sqrt(lamb*kMax))
+## Simulation parameters
+E = np.linspace(Eini,Efin,int((Efin-Eini)/dE))
+DOR = DO/DR
+lamb = 0.45 # For the algorithm to be stable, lamb = dT/dX^2 < 0.5
+dT = 0.005 # time increment, 10 ms for each second
+nT = int(tMax/dT) # number of time elements
+nE = np.size(E) # number of potential elements
+Xmax = 6*np.sqrt(nT*dT) # Infinite distance
+dX = np.sqrt(dT/lamb) # distance increment
+nX = int(Xmax/dX) # number of distance elements
 
-#### Definitions and initializations
-Ewin = Efin - Eini # Potential window
-nE = int(Ewin/dE) # number of potential elements in total
-E = np.linspace(Eini,Efin,nE) # Potential array
-nFRT = n*F/(R*T)
-eps = (E - E0)*nFRT # Normalised potential
-C = np.ones([kMax,iMax, nE]) # normalised concentration, initialised to 1
-iNorm = np.zeros([kMax,nE])
+## Discretisation of variables and initialisation
+CR = np.ones([nX,nT,nE]) # Initial condition for R, nT*2 refers to two sweeps
+CO = np.zeros([nX,nT,nE]) # Initial condition for O
+X = np.linspace(0,Xmax,nX) # Discretisation of distance
+T = np.linspace(0,1,nT) # Discretisation of time
+iNorm = np.zeros([nT,nE])
+eps = (E-E0)*nFRT
+delta = np.sqrt(DR*tMax)
+K0 = ks*delta/DR
 
-#### Finite differences to calculate the normalised concentration
-# Calculate concentrations in time (k), space (i) and potential (e)
-for e in range(0,nE):
-	C[:,0,e] = 1/(1+np.exp(eps[e])) # boundary condition for each potential
-	for k in range(0,kMax-1):
-		for i in range(1,iMax-1):
-			C[k+1,i,e] = lamb*C[k,i+1,e] + (1-2*lamb)*C[k,i,e] + lamb*C[k,i-1,e]
-	#### Calculate normalised current from normalised concentrations:
-	iNorm[:,e] = (C[:,1,e] - C[:,0,e])/dX
+for e in range(1,nE): # e = potential index
+    for k in range(1,nT): # k = time index
+        CR[0,k,e] = (CR[1,k-1,e] + dX*K0*np.exp(-alpha*eps[e])*(CO[1,k-1,e] + CR[1,k-1,e]/DOR))/(1 + dX*K0*(np.exp((1-alpha)*eps[e]) +np.exp(-alpha*eps[e]/DOR)))
+        CO[0,k,e] = CO[1,k-1,e] + (CR[1,k-1,e] - CR[0,k,e])/DOR
+        for i in range(1,nX-1): # i = distance index
+            CR[i,k,e] = CR[i,k-1,e] + lamb*(CR[i+1,k-1,e] - 2*CR[i,k-1,e] + CR[i-1,k-1,e])
+            CO[i,k,e] = CO[i,k-1,e] + DOR*lamb*(CO[i+1,k-1,e] - 2*CO[i,k-1,e] + CO[i-1,k-1,e])
+        iNorm[k,e] = (CR[1,k,e] - CR[0,k,e])/dX # Adimensional current
 
-#### Changing to dimensional values:
-delta = np.sqrt(D*tMax) # diffusion layer thicness
-t = np.linspace(0,tMax,kMax) # s, time array
-x = np.linspace(0,6*delta,iMax)*1e4 # um, distance from electrode
-c = cBulk*C # mol/cm3, concentration as a function of time and distance
-iDim = iNorm*n*F*A*D*cBulk/delta # A, dimensional current
+iDim = iNorm*n*F*A*DR*CRb/delta # Convert to dimensional current
 
-#### Plots
+if save == True:
+	np.savetxt("i_" + fileName + ".txt",iDim, delimiter = ",", header = "i / A")
+	
+## Plotting
+nt = np.array([1, nT-1]) # time indexes to plot 1st and last SCV
 plt.figure(1)
-plt.subplot(1,2,1)
-# Change value -1 to the time indexes desired. -1 refers to the longest time. Change it also in subplot 2
-plt.plot(E, iDim[-1,:].T*1e3, '-o') # 1e3 changes i to mA
-plt.xlabel('$E$ / V')
-plt.ylabel('$i$ / mA')
+fig = plt.plot(E, iDim[nt,:].T/iDim[nt,-1], '-o')
+plt.xlabel("$E$ / V")
+plt.ylabel("$i / i_{lim}$")
 plt.grid()
-plt.subplot(1,2,2)
-plt.plot(E, (iDim[-1,:].T/iDim[-1,-1]), '-o') 
-plt.xlabel('$E$ / V')
-plt.ylabel('$i / i_{lim}$')
-plt.grid()
-
 plt.show()
