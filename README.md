@@ -8,6 +8,10 @@ It requires:
 + Numpy
 + Matplotlib
 
+Tested with:
++ IDE: Spyder 3.3.6
++ OS: Manjaro Gnome
+
 ***
 Log:
 + 01/Apr/2020: added mod_waveforms.py
