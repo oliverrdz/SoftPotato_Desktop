@@ -47,18 +47,3 @@ i, x, cR, cO = sol.fd(t, E, n, A, E0, COb, CRb, DO, DR, ks, alpha)
 plot.tE(t, E) # Waveform
 plot.ti(t, i) # Chronoamperogram
 plot.xC(x, cR) # Concentration profile for R
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
