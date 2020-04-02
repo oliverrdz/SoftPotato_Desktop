@@ -10,6 +10,7 @@ It requires:
 
 ***
 Log:
++ 01/Apr/2020: added mod_waveforms.py
 + 06/Mar/2020: added Butler-Volmer kinetics to SP_SCV.py
 + 27/Feb/2020: added Butler-Volmer kinetics to SP_CV.py
 + 17/Feb/2020: added SP_CV.py
