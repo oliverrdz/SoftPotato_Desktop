@@ -26,13 +26,13 @@ import plots as plot
 
 #%% User parameters
 
-Vapp = 1    # V, applied potential
+Vapp = 2    # V, applied potential
 C = 20e-6   # C/cm2, capacitance
 Rs = 5e3    # ohms, solution resistance
 A = 1       # cm2, electroactive area
 
 # Potential waveform with default parameters
-t, E = wf.step(dt = 0.001)
+t, E = wf.step(Estep = Vapp, dt = 0.001)
 
 dt = t[1] - t[0] # s, time step
 nt = np.size(t)
