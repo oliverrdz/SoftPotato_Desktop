@@ -7,6 +7,7 @@ It requires:
 + Python 3+
 + Numpy
 + Matplotlib
++ Scipy
 
 Tested with:
 + IDE: Spyder 3.3.6
