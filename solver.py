@@ -24,6 +24,7 @@ def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks
     R = 8.315 # J/mol K, Gas constant
     Temp = 298 # K, Temperature
     nFRT = n*F/(R*Temp)
+    # test
 
     ## Simulation parameters:
     DOR = DO/DR
