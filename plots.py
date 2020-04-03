@@ -64,6 +64,23 @@ def ti(t, i):
     plt.ylabel("$i$ / A", fontsize = 18)
     plotFormat()
     
+def tq(t, q):
+    """ 
+    
+    Plots t vs q (charge transients)
+    
+    Parameters
+    ----------
+    t:  s, time array
+    q:  C, charge array
+        
+    """
+    plt.figure()
+    plt.plot(t, q, '-')
+    plt.xlabel("$t$ / s", fontsize = 18)
+    plt.ylabel("$q$ / C", fontsize = 18)
+    plotFormat()
+    
 def xC(x, C): # For concentration profiles
     """ 
     
