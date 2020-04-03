@@ -1,7 +1,7 @@
 # Soft Potato
 Open source electrochemistry simulator
 
-It simulates current transients and cyclic voltammetry for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For mor information visit [Soft Potato](https://oliverrdz.xyz/?cat=17).
+It simulates current transients and cyclic voltammetry for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For mor information visit [Soft Potato](https://oliverrdz.xyz/?page_id=143).
 
 It requires:
 + Python 3+
