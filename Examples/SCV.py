@@ -55,7 +55,6 @@ for e in range(0, np.size(Estep)):
     i[:,e], x, cR, cO = sol.fd(t, np.asarray(E[:,e]), n, A, E0, COb, CRb, DO, DR, ks, alpha)
 
 ## Plotting:
-#nt = np.array([1, nt-1]) # Time indexes to plot first and last SCVs
 plot.tE(t, E) # Waveform
 plot.ti(t, i) # Chronoamperograms
 plot.Ei(E.T, i.T) # SCVs
