@@ -27,12 +27,13 @@ import plots as plot
 #%% User parameters
 
 Vapp = 2    # V, applied potential
-C = 20e-6   # C/cm2, capacitance
+C = 20e-3    # C/cm2, capacitance
 Rs = 5e3    # ohms, solution resistance
 A = 1       # cm2, electroactive area
 
 # Potential waveform with default parameters
-t, E = wf.step(Estep = Vapp, dt = 0.001)
+#t, E = wf.step(Estep = Vapp, dt = 0.001)
+t, E = wf.sweep(ns = 4)
 
 dt = t[1] - t[0] # s, time step
 nt = np.size(t)
@@ -40,7 +41,7 @@ nt = np.size(t)
 Vc = np.zeros(nt) # V, array for the potential at the capacitor
 i = np.zeros(nt) # A, array for the current
 
-Vc[0] = 0 # V, initial condition
+Vc[0] = E[0] # V, initial condition
 
 for k in range(0, nt-1):
     Vc[k+1] = Vc[k] + (dt/(C*Rs))*(E[k] - Vc[k])
@@ -49,8 +50,9 @@ for k in range(0, nt-1):
 q = cumtrapz(i, t) # C, accumulative charge
 
 #%% Plots
+plot.tE(t, E)
 plot.tE(t, Vc)
-plot.ti(t, i)
+plot.Ei(E, i)
 plot.tq(t[1:], q)
 
 

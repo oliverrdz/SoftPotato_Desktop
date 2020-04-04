@@ -33,7 +33,7 @@ def plotFormat():
 def tE(t, E): # For potential waveform
     """ 
     
-    Plots t vs E (potential waveform)
+    Plots E vs t (potential waveform)
     
     Parameters
     ----------
@@ -50,7 +50,7 @@ def tE(t, E): # For potential waveform
 def ti(t, i):
     """ 
     
-    Plots t vs i (current transients)
+    Plots i vs t (current transients)
     
     Parameters
     ----------
@@ -67,7 +67,7 @@ def ti(t, i):
 def tq(t, q):
     """ 
     
-    Plots t vs q (charge transients)
+    Plots q vs t (charge transients)
     
     Parameters
     ----------
@@ -84,7 +84,7 @@ def tq(t, q):
 def xC(x, C): # For concentration profiles
     """ 
     
-    Plots x vs C (concentration profile)
+    Plots C vs x (concentration profile)
     
     Parameters
     ----------
@@ -101,7 +101,7 @@ def xC(x, C): # For concentration profiles
 def Ei(E, i): # For voltammetry
     """ 
     
-    Plots E vs i (voltammetry)
+    Plots i vs E  (voltammetry)
     
     Parameters
     ----------
@@ -115,10 +115,27 @@ def Ei(E, i): # For voltammetry
     plt.ylabel("$i$ / A", fontsize = 18)
     plotFormat()
     
+def Eq(E, q): 
+    """ 
+    
+    Plots q vs E
+    
+    Parameters
+    ----------
+    E:  V, potential array
+    q:  C, charge array
+        
+    """
+    plt.figure()
+    plt.plot(E, q, '-')
+    plt.xlabel("$E$ / V", fontsize = 18)
+    plt.ylabel("$q$ / C", fontsize = 18)
+    plotFormat()
+    
 def tiCottrell(t, i): # Cottrell plot
     """ 
     
-    Plots 1/sqrt(t) vs i (Cottrell plot)
+    Plots i vs 1/sqrt(t) (Cottrell plot)
     
     Parameters
     ----------
