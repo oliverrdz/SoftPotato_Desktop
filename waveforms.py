@@ -25,21 +25,22 @@ def sweep(Eini = -0.5, Efin = 0.5, sr = 1, dE = 0.01, ns = 2, tini = 0):
     
     Parameters
     ----------
-    Eini: Initial potential in V (-0.5 V)
-    Efin: Final potential in V (0.5 V)
-    sr: Scan rate in V/s (1 V/s)
-    dE: Potential increments in V (0.01 V)
-    ns: Number of sweeps (2)
-    tini: initial time for the sweep (0 s)
+    Eini:   initial potential in V (-0.5 V)
+    Efin:   final potential in V (0.5 V)
+    sr:     scan rate in V/s (1 V/s)
+    dE:     potential increments in V (0.01 V)
+    ns:     number of sweeps (2)
+    tini:   initial time for the sweep (0 s)
     
     Returns
     -------
-    t: time array in s
-    E: potential array in E
+    t:      time array in s
+    E:      potential array in E
     
     Examples
     --------
-    >>> t, E = sweepE(Eini, Efin, sr, dE, ns)
+    >>> import waveforms as wf
+    >>> t, E = wf.sweep(Eini, Efin, sr, dE, ns)
     
     Returns t and E calculated with the parameters given
         
@@ -63,6 +64,31 @@ def sweep(Eini = -0.5, Efin = 0.5, sr = 1, dE = 0.01, ns = 2, tini = 0):
 
 
 def step(Estep = 0.5, tini = 0, ttot = 1, dt = 0.01):
+    """ 
+    
+    Returns t and E for a step potential waveform.
+    All the parameters are given a default value.
+    
+    Parameters
+    ----------
+    Estep:  step potential in V (0.5 V)
+    tini:   initial time for the sweep (0 s)
+    ttot:   total time of the step (1 s)
+    dt:     step time (0.01 s)
+    
+    Returns
+    -------
+    t:      time array in s
+    E:      potential array in E
+    
+    Examples
+    --------
+    >>> import waveforms as wf
+    >>> t, E = wf.step(Estep, tini, ttot, dt)
+    
+    Returns t and E calculated with the parameters given
+        
+    """
     nt = int(ttot/dt) # number of time elements
     tfin = tini + ttot # final time of the step from tini
     

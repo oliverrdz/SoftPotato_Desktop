@@ -18,6 +18,38 @@
 import numpy as np
 
 def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks = 1e3, alpha = 0.5):
+    """ 
+    
+    Solves the Fick's laws for planar diffusion using explicit finite differences
+    Returns the calculated arrays of the current (i), distance (X) and concentration profiles of O and R (CO and CR respectively)
+        
+    Parameters
+    ----------
+    t:      s, time array
+    E:      V, potential array
+    n:      number of electrons (n = 1)
+    A:      cm2, geometrical area of the electrode (A = 1 cm2)
+    E0:     V, standard potential (E0 = 0 V)
+    COb:    mol/cm3, bulk concentration of species O (0 mol/cm3)
+    CRb:    mol/cm3, bulk concentration of species R (5e-6 mol/cm3)
+    DO:     cm2/s, diffusion coefficient of species O (1e-5 cm2/s)
+    DR:     cm2/s, diffusion coefficient of species R (1e-5 cm2/s)
+    ks:     cm/s, standard rate constant for electron transfer (1e3 cm/s)
+    alpha:  transfer coefficient (0.5)
+    
+    Returns
+    -------
+    i:      A, current array
+    X:      cm, distance array
+    CR:     mol/cm3, concentration matrix of species R [X, t]
+    CO:     mol/cm3, concentration matrix of species O [X, t]
+    
+    Examples
+    --------
+    >>> import solver as sol
+    >>> i, X, CR, CO = sol.fd(t, E, n, A, E0, COb, CRb, DO, DR, ks, alpha)
+        
+    """
     
     ## Electrochemistry constants
     F = 96485 # C/mol, Faraday constant
@@ -52,6 +84,6 @@ def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks
     		CO[i,k] = CO[i,k-1] + DOR*lamb*(CO[i+1,k-1] - 2*CO[i,k-1] + CO[i-1,k-1])
     	iNorm[k] = (CR[1,k] - CR[0,k])/dX # Adimensional current
     
-    iDim = iNorm*n*F*A*DR*CRb/delta # Convert to dimensional current
+    i = iNorm*n*F*A*DR*CRb/delta # Convert to dimensional current
     
-    return iDim, X, CR, CO
+    return i, X, CR*CRb, (1-CR)*CRb ## CHECK!!!!!!

@@ -18,7 +18,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plotFormat(): # Reusable code
+def plotFormat():
+    """ 
+    
+    Reusable code for plotting
+
+    """
     plt.xticks(fontsize = 14)
     plt.yticks(fontsize = 14)
     plt.grid()
@@ -26,6 +31,16 @@ def plotFormat(): # Reusable code
     plt.show
 
 def tE(t, E): # For potential waveform
+    """ 
+    
+    Plots t vs E (potential waveform)
+    
+    Parameters
+    ----------
+    t:  s, time array
+    E:  V, potential array
+        
+    """
     plt.figure()
     plt.plot(t, E, '-')
     plt.xlabel("$t$ / s", fontsize = 18)
@@ -33,13 +48,50 @@ def tE(t, E): # For potential waveform
     plotFormat()
 
 def ti(t, i):
+    """ 
+    
+    Plots t vs i (current transients)
+    
+    Parameters
+    ----------
+    t:  s, time array
+    i:  A, current array
+        
+    """
     plt.figure()
     plt.plot(t, i, '-')
     plt.xlabel("$t$ / s", fontsize = 18)
     plt.ylabel("$i$ / A", fontsize = 18)
     plotFormat()
     
+def tq(t, q):
+    """ 
+    
+    Plots t vs q (charge transients)
+    
+    Parameters
+    ----------
+    t:  s, time array
+    q:  C, charge array
+        
+    """
+    plt.figure()
+    plt.plot(t, q, '-')
+    plt.xlabel("$t$ / s", fontsize = 18)
+    plt.ylabel("$q$ / C", fontsize = 18)
+    plotFormat()
+    
 def xC(x, C): # For concentration profiles
+    """ 
+    
+    Plots x vs C (concentration profile)
+    
+    Parameters
+    ----------
+    x:  cm, distance array
+    C:  mol/cm3, concentration matrix (or array)
+        
+    """
     plt.figure()
     plt.plot(x, C, '-')
     plt.xlabel("$x$ / cm", fontsize = 18)
@@ -47,6 +99,16 @@ def xC(x, C): # For concentration profiles
     plotFormat()
     
 def Ei(E, i): # For voltammetry
+    """ 
+    
+    Plots E vs i (voltammetry)
+    
+    Parameters
+    ----------
+    E:  V, potential array
+    i:  A, current array
+        
+    """
     plt.figure()
     plt.plot(E, i, '-')
     plt.xlabel("$E$ / V", fontsize = 18)
@@ -54,6 +116,16 @@ def Ei(E, i): # For voltammetry
     plotFormat()
     
 def tiCottrell(t, i): # Cottrell plot
+    """ 
+    
+    Plots 1/sqrt(t) vs i (Cottrell plot)
+    
+    Parameters
+    ----------
+    t:  s, time array
+    i:  A, current array
+        
+    """
     plt.figure()
     plt.plot(1/np.sqrt(t), i, '-')
     plt.xlabel("$t^{-1/2}$ / s$^{-1/2}$", fontsize = 18)
