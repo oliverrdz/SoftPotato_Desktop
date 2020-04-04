@@ -20,7 +20,7 @@ import numpy as np
 def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks = 1e3, alpha = 0.5):
     """ 
     
-    Solves the Fick's laws for planar diffusion using explicit finite differences
+    Solves the Fick's laws for planar diffusion using explicit finite differences.
     Returns the calculated arrays of the current (i), distance (X) and concentration profiles of O and R (CO and CR respectively)
         
     Parameters
