@@ -50,7 +50,7 @@ def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks
     >>> i, X, CR, CO = sol.fd(t, E, n, A, E0, COb, CRb, DO, DR, ks, alpha)
         
     """
-    
+          
     ## Electrochemistry constants
     F = 96485 # C/mol, Faraday constant
     R = 8.315 # J/mol K, Gas constant
@@ -58,11 +58,12 @@ def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks
     nFRT = n*F/(R*Temp)
 
     ## Simulation parameters:
+    nT = np.size(t) # number of time elements
+    dT = 1/nT # adimensional step time
     DOR = DO/DR
     lamb = 0.45 # For the algorithm to be stable, lamb = dT/dX^2 < 0.5
-    dT = t[1] - t[0] # time increment
     nT = np.size(t) # number of time elements
-    Xmax = 6*np.sqrt(nT*dT) # Infinite distance
+    Xmax = 6*np.sqrt(nT*lamb) # Infinite distance
     dX = np.sqrt(dT/lamb) # distance increment
     nX = int(Xmax/dX) # number of distance elements
     
@@ -85,5 +86,5 @@ def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks
     	iNorm[k] = (CR[1,k] - CR[0,k])/dX # Adimensional current
     
     i = iNorm*n*F*A*DR*CRb/delta # Convert to dimensional current
-    
-    return i, X, CR*CRb, (1-CR)*CRb ## CHECK!!!!!!
+    x = X*np.sqrt(DR*t[-1])
+    return i, x, CR*CRb, (1-CR)*CRb ## CHECK!!!!!!
