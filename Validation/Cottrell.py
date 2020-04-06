@@ -56,27 +56,3 @@ plt.plot(t, i - iCot, label = "$i$ - $i_{cot}$")
 plt.xlabel("$t$ / s", fontsize = 18)
 plt.ylabel("($i$ - $i_{cot}$) / A", fontsize = 18)
 plot.plotFormat()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
