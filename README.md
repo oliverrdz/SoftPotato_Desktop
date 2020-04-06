@@ -1,8 +1,28 @@
 # Soft Potato
 Open source electrochemistry simulator
 
-It simulates current transients and cyclic voltammetry for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit [Soft Potato](https://oliverrdz.xyz/?page_id=143).
+It simulates current transients and cyclic voltammogram for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit [Soft Potato](https://oliverrdz.xyz/?page_id=143).
 
+# Installation
+Download the repository and place wafevorms.py, solver.py and plots.py. The easiest way to access the functions from Pyhton is to put the files on the same folder where you want to create your script. Alternatively, add the folder SoftPotato to the PYTHONPATH variable; if using [Spyder](https://www.spyder-ide.org/), go to Tools/PYTHONPATH manager and add the folder SoftPotato, in this way, the modules can be accessed from any path.
+
+# Usage
+The general usage is as follows:
++ Import modules
++ Declare parameters
++ Create waveform
++ Solve
++ Plot
+
+The folder Examples shows code for typical electrochemical experiments (CV, CA, SCV, etc.).
+
+# Contributing
+To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r). If you write the code for a specific technique using SP and want it to be accesible for everyone, please contact me so it can be added to the repository and the SP wiki.
+
+# Credits
+The simulator is based on the "Modelling in Electrochemistry" lectures given by [Dr. Guy Denuault](https://www.southampton.ac.uk/chemistry/about/staff/gd.page).
+
+# Requirements
 It requires:
 + Python 3+
 + Numpy
@@ -12,6 +32,16 @@ It requires:
 Tested with:
 + IDE: Spyder 3.3.6
 + OS: Manjaro Gnome
+
+# Pending
++ Add ability to simulate a reduction process
++ Add ability to have both species in solution at t = 0
++ Check denormalisation of X.
+
+# Planed improvements
++ Add double layer capacitance and solution resistance
++ Spherical and hemispherical diffusion
++ Graphical user interface
 
 ***
 Log:
