@@ -4,7 +4,7 @@ Open source electrochemistry simulator
 It simulates current transients and cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit [Soft Potato](https://oliverrdz.xyz/?page_id=143).
 
 # Installation
-Download the repository and place wafevorms.py, solver.py and plots.py. The easiest way to access the functions from Pyhton is to put the files on the same folder where you want to create your script. Alternatively, add the folder SoftPotato to the PYTHONPATH variable; if using [Spyder](https://www.spyder-ide.org/), go to Tools/PYTHONPATH manager and add the folder SoftPotato, in this way, the modules can be accessed from any path.
+Download the repository. The easiest way to access the functions from Pyhton is to put the files (wafevorms.py, solver.py and plots.py) on the same folder where you want to create your script. Alternatively, add the folder SoftPotato to the PYTHONPATH variable; if using [Spyder](https://www.spyder-ide.org/), go to Tools/PYTHONPATH manager and add the folder SoftPotato, in this way, the modules can be accessed from any path.
 
 # Usage
 The general usage is as follows:
