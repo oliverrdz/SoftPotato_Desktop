@@ -36,7 +36,6 @@ Tested with:
 # Pending
 + Add ability to simulate a reduction process
 + Add ability to have both species in solution at t = 0
-+ Check denormalisation of X.
 
 # Planed improvements
 + Add double layer capacitance and solution resistance
