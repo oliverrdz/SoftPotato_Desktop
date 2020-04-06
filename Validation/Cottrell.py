@@ -39,20 +39,20 @@ t, E = wf.step()
 i, X, CR, CO = sol.fd(t, E, n = n, A = A, CRb = CRb, DO = DO, DR = DR)
 
 ## Cottrell equation
-iCot = n*F*A*CRb*np.sqrt(DR)/np.sqrt(np.pi*t)
+iCot = n*F*A*CRb*np.sqrt(DR)/np.sqrt(np.pi*t[1:])
 
 #%% Plotting:
 plt.figure(1)
 ax = plt.subplot(111)
 ax.plot(t, i, 'o', label = "Simulated")
-ax.plot(t, iCot, label ="Analytical")
+ax.plot(t[1:], iCot, label ="Analytical")
 ax.legend(fontsize = 18)
 plt.xlabel("$t$ / s", fontsize = 18)
 plt.ylabel("$i$ / A", fontsize = 18)
 plot.plotFormat()
 
 plt.figure(2)
-plt.plot(t, i - iCot, label = "$i$ - $i_{cot}$")
+plt.plot(t[1:], i[1:] - iCot, label = "$i$ - $i_{cot}$")
 plt.xlabel("$t$ / s", fontsize = 18)
 plt.ylabel("($i$ - $i_{cot}$) / A", fontsize = 18)
 plot.plotFormat()
