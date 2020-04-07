@@ -34,8 +34,8 @@ E = np.concatenate([E1, E2, E3])
 i, x, cR, cO = sol.fd(t, E) # The rest of the parameters left with their default values
 
 #%% Plotting:
-plot.tE(t, E) # Waveform
-plot.ti(t, i) # Current vs t
-plot.Ei(E1, i[0:np.size(E1)]) # CVs
-plot.ti(t2, i[np.size(E1):np.size(E1) + np.size(E2)]) # First step
-plot.ti(t3, i[np.size(E1) + np.size(E2):]) # Second step
+plot.Et(t, E, nFig = 1) # Waveform
+plot.it(t, i, nFig = 2) # Current vs t
+plot.iE(E1, i[0:np.size(E1)], nFig = 3) # CVs
+plot.it(t2, i[np.size(E1):np.size(E1) + np.size(E2)], nFig = 4) # First step
+plot.it(t3, i[np.size(E1) + np.size(E2):], nFig = 5) # Second step
