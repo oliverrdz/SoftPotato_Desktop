@@ -55,7 +55,7 @@ iCot = n*F*A*CRb*np.sqrt(DR)/np.sqrt(np.pi*t[1:])
 fig1 = plt.figure(1)
 ax = plt.subplot(111)
 ax.plot(t, i, 'o', label = "Simulated")
-ax.plot(t[1:], iCot, label ="Analytical")
+ax.plot(t[1:], iCot, label ="Cottrell")
 ax.legend(fontsize = 18)
 plt.xlabel("$t$ / s", fontsize = 18)
 plt.ylabel("$i$ / A", fontsize = 18)
@@ -87,11 +87,11 @@ plt.xlabel("$t$ / s", fontsize = 18)
 plt.ylabel("$E$ / V", fontsize = 18)
 plot.plotFormat()
 
-save = 0
+save = 1
 if save:
     fig1.savefig("it.png")
     fig2.savefig("error.png")
-    fig3.savefig("xCR.png")
-    fig4.savefig("xCO.png")
-    fig5.savefig("tE.png")
+    #fig3.savefig("xCR.png")
+    #fig4.savefig("xCO.png")
+    #fig5.savefig("tE.png")
 
