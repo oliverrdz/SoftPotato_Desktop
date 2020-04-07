@@ -65,7 +65,7 @@ iP_RS = 0.4463*F*A*CRb*np.sqrt(F*sr*DR/(R*T))
 
 fig1 = plt.figure(1)
 lines = plt.plot(E, i)
-plt.legend(iter(lines), ("1e$^{-3}$ mV s$^{-1}$", "1e$^{-2}$ mV s$^{-1}$", "1e$^{-1}$ mV s$^{-1}$", "1e$^{0}$ mV s$^{-1}$", "1e$^{1}$ mV s$^{-1}$", "1e$^{2}$ mV s$^{-1}$", "1e$^{3}$ mV s$^{-1}$"))
+plt.legend(iter(lines), ("1e$^{-3}$ V s$^{-1}$", "1e$^{-2}$ V s$^{-1}$", "1e$^{-1}$ V s$^{-1}$", "1e$^{0}$ V s$^{-1}$", "1e$^{1}$ V s$^{-1}$", "1e$^{2}$ V s$^{-1}$", "1e$^{3}$ V s$^{-1}$"))
 plt.xlabel("$E$ / V", fontsize = 18)
 plt.ylabel("$i$ / A", fontsize = 18)
 plt.xticks(fontsize = 14)
