@@ -27,7 +27,7 @@ t, E = wf.sweep()
 i, x, cR, cO = sol.fd(t, E)
 
 ## Plotting:
-plot.tE(t, E) # Waveform
-plot.Ei(E, i) # Voltammogram
-plot.xC(x, cR) # Concentration profile for R
-plot.xC(x, cO) # Concentration profile for O
+plot.Et(t, E, nFig = 1) # Waveform
+plot.iE(E, i, nFig = 2) # Voltammogram
+plot.Cx(x, cR, nFig = 3) # Concentration profile for R
+plot.Cx(x, cO, nFig = 4) # Concentration profile for O
