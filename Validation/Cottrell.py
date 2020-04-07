@@ -87,11 +87,11 @@ plt.xlabel("$t$ / s", fontsize = 18)
 plt.ylabel("$E$ / V", fontsize = 18)
 plot.plotFormat()
 
-save = 1
+save = 0
 if save:
     fig1.savefig("it.png")
     fig2.savefig("error.png")
-    #fig3.savefig("xCR.png")
-    #fig4.savefig("xCO.png")
-    #fig5.savefig("tE.png")
+    fig3.savefig("xCR.png")
+    fig4.savefig("xCO.png")
+    fig5.savefig("tE.png")
 
