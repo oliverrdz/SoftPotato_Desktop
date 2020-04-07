@@ -17,7 +17,7 @@ The general usage is as follows:
 The folder Examples shows code for typical electrochemical experiments (CV, CA, SCV, etc.), while the folder Validation has scripts that compares the simulated responses with analytical solutions.
 
 # Contributing
-To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r). If you write the code for a specific technique using SP and want it to be accesible for everyone, please contact me so it can be added to the repository and the SP wiki.
+To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request. If you write the code for a specific technique using SP and want it to be accesible for everyone, please contact me so it can be added to the repository and the SP wiki.
 
 # Credits
 The simulator is based on the "Modelling in Electrochemistry" lectures given by [Dr. Guy Denuault](https://www.southampton.ac.uk/chemistry/about/staff/gd.page).
