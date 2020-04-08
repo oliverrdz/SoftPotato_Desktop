@@ -41,12 +41,13 @@ def Et(t, E, nFig = 1): # For potential waveform
     E:  V, potential array
         
     """
-    fig = plt.figure(nFig)
-    plt.plot(t, E, '-')
+    
+    plt.figure(nFig)
+    fig = plt.plot(t, E, '-')
     plt.xlabel("$t$ / s", fontsize = 18)
     plt.ylabel("$E$ / V", fontsize = 18)
     plotFormat()
-    return fig  # This allows saving the figure with fig.savefig("name.png")
+    return fig
 
 def it(t, i, nFig = 1):
     """ 

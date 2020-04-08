@@ -1,4 +1,4 @@
-#### Simulation of sampled current voltammetry
+#### Simulates sampled current voltammograms
 '''
     Copyright (C) 2020 Oliver Rodriguez
     This program is free software: you can redistribute it and/or modify
@@ -17,6 +17,8 @@
 
 ## Import required modules:
 import numpy as np
+import matplotlib.pyplot as plt
+
 import waveforms as wf
 import solver as sol
 import plots as plot
@@ -25,36 +27,44 @@ import plots as plot
 Eini = -0.3     # V, initial potential
 Efin = 0.5      # V, final potential
 nE = 80         # number of potential steps
-tini = 0        # s, initial time for each step
 ttot = 1        # s, total time for each step
 dt = 0.01        # s, time step
 
-## User parameters for the simulation:
-n = 1           # number of electrons
-A = 1           # cm2, geometrical area
-E0 = 0          # V, standard potential
-COb = 0         # mol/cm3, bulk concentration of O
-CRb = 5e-6      # mol/cm3, bulk concentraion of R
-DO = 1e-5       # cm2/s, diffusion coefficient of O
-DR = 1e-5       # cm2/s, diffusion coefficient of R
-ks = 1e3        # cm/s, standard rate constant
-alpha = 0.5     # transfer coefficient
-
-# Creates array of potentials:
+#%% Creates array of potentials:
 nt = int(ttot/dt) # number of time elements, required to create E and i arrays
 Estep = np.linspace(Eini, Efin, nE)
 E = np.zeros([nt, np.size(Estep)]) # Creates E array
 i = np.zeros([nt, np.size(Estep)]) # Creates i array
 
-## Iterate over each potential step:
+#%% Iterate over each potential step:
 for e in range(0, np.size(Estep)):
     ## Creating potential waveform:
-    t, E[:,e] = wf.step(Estep[e], tini, ttot, dt)
+    t, E[:,e] = wf.step(Estep[e], ttot = ttot, dt = dt)
     
     ## Solving:
-    i[:,e], x, cR, cO = sol.fd(t, np.asarray(E[:,e]), n, A, E0, COb, CRb, DO, DR, ks, alpha)
+    i[:,e], x, cR, cO = sol.fd(t, E[:,e])
 
-## Plotting:
+
+#%% Plotting
+
 plot.Et(t, E, nFig = 1) # Waveform
 plot.it(t, i, nFig = 2) # Chronoamperograms
 plot.iE(E.T, i.T, nFig = 3) # SCVs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
