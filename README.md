@@ -1,7 +1,7 @@
 # Soft Potato
 Open source electrochemistry simulator
 
-It simulates current transients and cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit [Soft Potato](https://oliverrdz.xyz/?page_id=143) and the [SP wiki](https://github.com/oliverrdz/SoftPotato/wiki) (in process).
+It simulates current transients and cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit [Soft Potato](https://oliverrdz.xyz/?page_id=143) and the [SP wiki](https://github.com/oliverrdz/SoftPotato/wiki).
 
 # Installation
 Download the repository. The easiest way to access the functions from Pyhton is to put the files wafevorms.py, solver.py and plots.py on the same folder where you want to create your script. Alternatively, add the folder SoftPotato to the PYTHONPATH variable; if using [Spyder](https://www.spyder-ide.org/), this can be done by going to Tools/PYTHONPATH manager and add the folder SoftPotato, in this way, the modules can be accessed from any path.
@@ -32,12 +32,3 @@ It requires:
 Tested with:
 + IDE: Spyder 3.3.6
 + OS: Manjaro Gnome
-
-# Pending
-+ Add ability to simulate a reduction process
-+ Add ability to have both species in solution at t = 0
-
-# Planed improvements
-+ Add double layer capacitance and solution resistance
-+ Spherical and hemispherical diffusion
-+ Graphical user interface
