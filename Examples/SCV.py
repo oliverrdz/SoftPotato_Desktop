@@ -47,9 +47,9 @@ for e in range(0, np.size(Estep)):
 
 #%% Plotting
 
-plot.Et(t, E, nFig = 1) # Waveform
-plot.it(t, i, nFig = 2) # Chronoamperograms
-plot.iE(E.T, i.T, nFig = 3) # SCVs
+plot.Et(t, E) # Waveform
+plot.it(t, i) # Chronoamperograms
+plot.iE(E.T, i.T) # SCVs
 
 
 

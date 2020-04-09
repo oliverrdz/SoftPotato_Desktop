@@ -44,6 +44,6 @@ t, E = wf.step(Estep, tini, ttot, dt)
 i, x, cR, cO = sol.fd(t, E, n, A, E0, COb, CRb, DO, DR, ks, alpha)
 
 ## Plotting:
-plot.Et(t, E, nFig = 1) # Waveform
-plot.it(t, i, nFig = 1) # Chronoamperogram
-plot.Cx(x, cR, nFig = 1) # Concentration profile for R
+plot.Et(t, E) # Waveform
+plot.it(t, i) # Chronoamperogram
+plot.Cx(x, cR) # Concentration profile for R
