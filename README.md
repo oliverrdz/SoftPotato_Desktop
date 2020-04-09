@@ -33,4 +33,3 @@ Tested with:
 + IDE: Spyder 3.3.6
 + OS: Manjaro Gnome
 
-[[https://github.com/oliverrdz/SoftPotato/blob/master/Figs/CVs_dE10mV.png]]
