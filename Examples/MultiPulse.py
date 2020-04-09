@@ -37,6 +37,6 @@ i, x, cR, cO = sol.fd(t, E)
 q = cumtrapz(i, t) # C, charge
 
 #%% Plotting
-plot.Et(t, E, nFig = 1)
-plot.it(t, i, nFig = 2)
-plot.qt(t[1:], q, nFig = 3)
+plot.Et(t, E)
+plot.it(t, i)
+plot.qt(t[1:], q)
