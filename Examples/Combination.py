@@ -22,9 +22,9 @@ import solver as sol
 import plots as plot
 
 ## Creating potential waveform by sections:
-t1, E1 = wf.sweep(Eini = -0.5, Efin = 0.5, sr = 0.5, dE = 0.001, ns = 7, tini = 0)
-t2, E2 = wf.step(Estep = -0.5, tini = t1[-1], ttot = 10, dt = 0.01)
-t3, E3 = wf.step(Estep = 0.5, tini = t2[-1], ttot = 10, dt = 0.01)
+t1, E1 = wf.sweep(Eini = -0.5, Efin = 0.5, sr = 0.5, dE = 0.01, ns = 5, tini = 0)
+t2, E2 = wf.step(Estep = 0.5, tini = t1[-1], ttot = 2, dt = 0.01)
+t3, E3 = wf.step(Estep = -0.5, tini = t2[-1], ttot = 2, dt = 0.01)
 
 ## Assembling potential waveform
 t = np.concatenate([t1, t2, t3])
