@@ -30,7 +30,7 @@ def plotFormat():
     plt.tight_layout()
     plt.show
 
-def Et(t, E, nFig = 1): # For potential waveform
+def Et(t, E): # For potential waveform
     """ 
     
     Plots E vs t (potential waveform)
@@ -42,14 +42,13 @@ def Et(t, E, nFig = 1): # For potential waveform
         
     """
     
-    plt.figure(nFig)
-    fig = plt.plot(t, E, '-')
+    plt.figure()
+    plt.plot(t, E, '-')
     plt.xlabel("$t$ / s", fontsize = 18)
     plt.ylabel("$E$ / V", fontsize = 18)
     plotFormat()
-    return fig
 
-def it(t, i, nFig = 1):
+def it(t, i):
     """ 
     
     Plots i vs t (current transients)
@@ -60,14 +59,13 @@ def it(t, i, nFig = 1):
     i:  A, current array
         
     """
-    fig = plt.figure(nFig)
+    plt.figure()
     plt.plot(t, i, '-')
     plt.xlabel("$t$ / s", fontsize = 18)
     plt.ylabel("$i$ / A", fontsize = 18)
     plotFormat()
-    return fig
     
-def qt(t, q, nFig = 1):
+def qt(t, q):
     """ 
     
     Plots q vs t (charge transients)
@@ -78,14 +76,13 @@ def qt(t, q, nFig = 1):
     q:  C, charge array
         
     """
-    fig = plt.figure(nFig)
+    plt.figure()
     plt.plot(t, q, '-')
     plt.xlabel("$t$ / s", fontsize = 18)
     plt.ylabel("$q$ / C", fontsize = 18)
     plotFormat()
-    return fig
     
-def Cx(x, C, nFig = 1): # For concentration profiles
+def Cx(x, C): # For concentration profiles
     """ 
     
     Plots C vs x (concentration profile)
@@ -96,14 +93,13 @@ def Cx(x, C, nFig = 1): # For concentration profiles
     C:  mol/cm3, concentration matrix (or array)
         
     """
-    fig = plt.figure(nFig)
+    plt.figure()
     plt.plot(x, C, '-')
     plt.xlabel("$x$ / cm", fontsize = 18)
     plt.ylabel("$C$ / mol cm$^{-3}$", fontsize = 18)
     plotFormat()
-    return fig
     
-def iE(E, i, nFig = 1): # For voltammetry
+def iE(E, i): # For voltammetry
     """ 
     
     Plots i vs E  (voltammetry)
@@ -114,14 +110,13 @@ def iE(E, i, nFig = 1): # For voltammetry
     i:  A, current array
         
     """
-    fig = plt.figure(nFig)
+    plt.figure()
     plt.plot(E, i, '-')
     plt.xlabel("$E$ / V", fontsize = 18)
     plt.ylabel("$i$ / A", fontsize = 18)
     plotFormat()
-    return fig
     
-def qE(E, q, nFig = 1): 
+def qE(E, q): 
     """ 
     
     Plots q vs E
@@ -132,14 +127,13 @@ def qE(E, q, nFig = 1):
     q:  C, charge array
         
     """
-    fig = plt.figure(nFig)
+    plt.figure()
     plt.plot(E, q, '-')
     plt.xlabel("$E$ / V", fontsize = 18)
     plt.ylabel("$q$ / C", fontsize = 18)
     plotFormat()
-    return fig
     
-def itCottrell(t, i, nFig = 1): # Cottrell plot
+def itCottrell(t, i): # Cottrell plot
     """ 
     
     Plots i vs 1/sqrt(t) (Cottrell plot)
@@ -150,9 +144,8 @@ def itCottrell(t, i, nFig = 1): # Cottrell plot
     i:  A, current array
         
     """
-    fig = plt.figure(nFig)
+    plt.figure()
     plt.plot(1/np.sqrt(t), i, '-')
     plt.xlabel("$t^{-1/2}$ / s$^{-1/2}$", fontsize = 18)
     plt.ylabel("$i$ / A", fontsize = 18)
     plotFormat()
-    return fig
