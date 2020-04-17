@@ -54,30 +54,3 @@ plot.tE(t, E)
 plot.tE(t, Vc)
 plot.Ei(E, i)
 plot.tq(t[1:], q)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
