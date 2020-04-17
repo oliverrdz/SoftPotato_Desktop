@@ -30,27 +30,6 @@ def plotFormat():
     plt.tight_layout()
     plt.show
     
-def plot(x, y, marker = "-", xlab = "$E$ / V", ylab = "$i$ / A"):
-    """ 
-    
-    Plots x vs y (general plot)
-    
-    Parameters
-    ----------
-    x:      x array
-    y:      y array
-    marker: string ("-", ".", "--", ".-")
-    xlab: string for the x label
-    ylab: string for the y label
-        
-    """
-    
-    plt.figure()
-    plt.plot(x, y, marker)
-    plt.xlabel(xlab, fontsize = 18)
-    plt.ylabel(ylab, fontsize = 18)
-    plotFormat()
-
 def Et(t, E): # For potential waveform
     """ 
     
