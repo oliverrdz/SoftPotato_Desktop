@@ -79,7 +79,7 @@ def fd(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-5, ks
     
     ## Finite differences
     for k in range(1,nT): # k = time index
-    	CR[0,k] = (CR[1,k-1] + dX*K0*np.exp(-alpha*eps[k])*(CO[1,k-1] + CR[1,k-1]/DOR))/(1 + dX*K0*(np.exp((1-alpha)*eps[k]) +np.exp(-alpha*eps[k]/DOR)))
+    	CR[0,k] = (CR[1,k-1] + dX*K0*np.exp(-alpha*eps[k])*(CO[1,k-1] + CR[1,k-1])/DOR)/(1 + dX*K0*(np.exp((1-alpha)*eps[k]) +np.exp(-alpha*eps[k]/DOR)))
     	CO[0,k] = CO[1,k-1] + (CR[1,k-1] - CR[0,k])/DOR
     	for i in range(1,nX-1): # i = distance index
     		CR[i,k] = CR[i,k-1] + lamb*(CR[i+1,k-1] - 2*CR[i,k-1] + CR[i-1,k-1])
@@ -152,7 +152,7 @@ def fd_CdRu(t, E, n = 1, A = 1, E0 = 0, COb = 0, CRb = 5e-6, DO = 1e-5, DR = 1e-
     
     ## Finite differences
     for k in range(1,nT): # k = time index
-        CR[0,k] = (CR[1,k-1] + dX*K0*np.exp(-alpha*eps[k])*(CO[1,k-1] + CR[1,k-1]/DOR))/(1 + dX*K0*(np.exp((1-alpha)*eps[k]) +np.exp(-alpha*eps[k]/DOR)))
+        CR[0,k] = (CR[1,k-1] + dX*K0*np.exp(-alpha*eps[k])*(CO[1,k-1] + CR[1,k-1])/DOR)/(1 + dX*K0*(np.exp((1-alpha)*eps[k]) +np.exp(-alpha*eps[k]/DOR)))
         CO[0,k] = CO[1,k-1] + (CR[1,k-1] - CR[0,k])/DOR
         for i in range(1,nX-1): # i = distance index
             CR[i,k] = CR[i,k-1] + lamb*(CR[i+1,k-1] - 2*CR[i,k-1] + CR[i-1,k-1])
