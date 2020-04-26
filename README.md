@@ -26,4 +26,5 @@ To report bugs, make suggestions or comments or collaborations, please contact m
 The simulator is based on the "Modelling in Electrochemistry" lectures given by [Dr. Guy Denuault](https://www.southampton.ac.uk/chemistry/about/staff/gd.page).
 
 # Screenshot, v0.2.0
-[[https://github.com/oliverrdz/SoftPotato/blob/master/Figs/screenshot_v0-2-0.png]]
+
+![Screenshot v0.2.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/screenshot_v0-2-0.png?raw=true])
