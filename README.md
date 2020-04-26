@@ -19,6 +19,11 @@ It requires:
 Tested with:
 + OS: Debian 10, XFCE
 
+# Pending:
++ Desing GUI for chronoamperometry and sampled current voltammetry
++ Change to an implicit algorithm to improve stability
++ Activate non-faradaic response
+
 # Contributing
 To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request.
 
