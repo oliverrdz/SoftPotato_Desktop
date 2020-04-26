@@ -12,9 +12,9 @@ python3 SP.py
 # Requirements
 It requires:
 + Python 3+
++ PyQt5
 + Numpy
 + Matplotlib
-+ Scipy
 
 Tested with:
 + OS: Debian 10, XFCE
