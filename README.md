@@ -1,26 +1,13 @@
 # Soft Potato
-Open source electrochemistry simulator
+Open source electrochemistry simulator, now with a graphical interface!
 
-It simulates current transients and cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit the [SP wiki](https://github.com/oliverrdz/SoftPotato/wiki).
-
-# Installation
-Download the repository. The easiest way to access the functions from Pyhton is to put the files wafevorms.py, solver.py and plots.py on the same folder where you want to create your script. Alternatively, add the folder SoftPotato to the PYTHONPATH variable; if using [Spyder](https://www.spyder-ide.org/), this can be done by going to Tools/PYTHONPATH manager and add the folder SoftPotato, in this way, the modules can be accessed from any path.
+It simulates cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics as well as nerstian response. For more information visit [https://oliverrdz.xyz](https://oliverrdz.xyz/?page_id=143).
 
 # Usage
-The general usage is as follows:
-+ Import modules
-+ Declare parameters
-+ Create waveform
-+ Solve
-+ Plot
-
-The folder Examples shows code for typical electrochemical experiments (CV, CA, SCV, etc.), while the folder Validation has scripts that compares the simulated responses with analytical solutions.
-
-# Contributing
-To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request. If you write the code for a specific technique using SP and want it to be accesible for everyone, please contact me so it can be added to the repository and the SP wiki.
-
-# Credits
-The simulator is based on the "Modelling in Electrochemistry" lectures given by [Dr. Guy Denuault](https://www.southampton.ac.uk/chemistry/about/staff/gd.page).
+Download the repository. From a terminal and within the SP directory, run:
+```python
+python3 SP.py 
+```
 
 # Requirements
 It requires:
@@ -30,6 +17,13 @@ It requires:
 + Scipy
 
 Tested with:
-+ IDE: Spyder 3.3.6
-+ OS: Manjaro Gnome
++ OS: Debian 10, XFCE
 
+# Contributing
+To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request.
+
+# Credits
+The simulator is based on the "Modelling in Electrochemistry" lectures given by [Dr. Guy Denuault](https://www.southampton.ac.uk/chemistry/about/staff/gd.page).
+
+# Screenshot, v0.2.0
+[[https://github.com/oliverrdz/SoftPotato/tree/master/Figs/screenshot_v0.2.0.png]]
