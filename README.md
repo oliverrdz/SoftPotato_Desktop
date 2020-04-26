@@ -27,4 +27,3 @@ The simulator is based on the "Modelling in Electrochemistry" lectures given by 
 
 # Screenshot, v0.2.0
 [[https://github.com/oliverrdz/SoftPotato/blob/master/Figs/screenshot_v0-2-0.png]]
-[[https://github.com/oliverrdz/SoftPotato/tree/master/Figs/screenshot_v0-2-0.png]]
