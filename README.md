@@ -20,6 +20,7 @@ Tested with:
 + OS: Debian 10, XFCE
 
 # Pending:
++ Build executable for Linux/Mac/Windows
 + Desing GUI for chronoamperometry and sampled current voltammetry
 + Change to an implicit algorithm to improve stability
 + Activate non-faradaic response
