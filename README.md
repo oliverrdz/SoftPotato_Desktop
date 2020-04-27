@@ -4,7 +4,7 @@ Open source electrochemistry simulator, now with a graphical interface!
 It simulates cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics as well as nerstian response. For more information visit [https://oliverrdz.xyz](https://oliverrdz.xyz/?page_id=143).
 
 # Usage
-Download the repository. From a terminal and within the SP directory, run:
+Download the repository. From a terminal and within the Soft Potato directory, run:
 ```python
 python3 SP.py 
 ```
