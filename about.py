@@ -70,7 +70,7 @@ class Ui_About(object):
         self.label.setText(_translate("About", "<html><head/><body><p><img src=logo.svg></p></body></html>"))
         self.label_2.setText(_translate("About", "Soft Potato"))
         self.label_3.setText(_translate("About", "Free and open source electrochemical simulator"))
-        self.label_4.setText(_translate("About", "v1.1.0"))
+        self.label_4.setText(_translate("About", "v1.0.0"))
         self.label_5.setText(_translate("About", "<html><head/><body><p>Visit <a href=\"https://oliverrdz.xyz/?page_id=143\"><span style=\" text-decoration: underline; color:#0000ff;\">https://oliverrdxz.xyz</span></a></p></body></html>"))
         self.label_6.setText(_translate("About", "Licensed under GPL v3"))
         self.label_7.setText(_translate("About", "Copyright © 2020 Oliver Rodríguez"))
