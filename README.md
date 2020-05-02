@@ -17,6 +17,13 @@ It requires:
 + Matplotlib
 + [celluloid](https://github.com/jwkvam/celluloid)
 
+```python
+pip3 install numpy
+pip3 install matplotlib
+pip3 install pyqt5
+pip3 install celluloid
+```
+
 Tested with:
 + OS: PopOs
 
