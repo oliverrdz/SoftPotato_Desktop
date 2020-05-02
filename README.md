@@ -15,13 +15,13 @@ It requires:
 + PyQt5
 + Numpy
 + Matplotlib
++ celluloid
 
 Tested with:
-+ OS: Debian 10, XFCE
++ OS: PopOs
 
 # Pending:
 + Build executable for Linux/Mac/Windows
-+ Desing GUI for chronoamperometry and sampled current voltammetry
 + Change to an implicit algorithm to improve stability
 + Activate non-faradaic response
 
@@ -31,6 +31,6 @@ To report bugs, make suggestions or comments or collaborations, please contact m
 # Credits
 The simulator is based on the "Modelling in Electrochemistry" lectures given by [Dr. Guy Denuault](https://www.southampton.ac.uk/chemistry/about/staff/gd.page).
 
-# Screenshot, v0.2.0
+# Screenshot, v1.0.0
 
-![Screenshot v0.2.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/screenshot_v0-2-0.png?raw=true])
+![Screenshot v1.0.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/screenshot_v1-0-0.png?raw=true])
