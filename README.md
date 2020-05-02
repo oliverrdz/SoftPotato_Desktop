@@ -33,4 +33,4 @@ The simulator is based on the "Modelling in Electrochemistry" lectures given by 
 
 # Screenshot, v1.0.0
 
-![Screenshot v1.0.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/screenshot_v1-0-0.png?raw=true])
+![Screenshot v1.0.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v1.0.0.png?raw=true])
