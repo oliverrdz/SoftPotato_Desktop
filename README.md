@@ -15,7 +15,7 @@ It requires:
 + PyQt5
 + Numpy
 + Matplotlib
-+ celluloid
++ [celluloid](https://github.com/jwkvam/celluloid)
 
 Tested with:
 + OS: PopOs
