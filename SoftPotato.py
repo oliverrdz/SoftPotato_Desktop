@@ -396,7 +396,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
                 ax[1].plot(self.x, self.cO[:,n]*1e3, 'k')
                 ax[1].plot(self.x, self.cR[:,n]*1e3, 'r')
                 camera.snap()
-            xlab0 = "$E$ / V"
+            xlab0 = "$t$ / s"
             ylab0 = "$i$ / A"
             xlab1 = "$x$ / cm"
             ylab1 = "C / M" 
