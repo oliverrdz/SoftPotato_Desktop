@@ -273,7 +273,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         
         
         self.progressBar.setEnabled(True)
-        
+                
         if self.Et_type == "SCV":
             nt = self.t.shape[0] # number of time elements
             nE = self.E.shape[1] # number of potential waveforms (E for SCV or scan rates for CVs)
@@ -295,6 +295,8 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             return
         
         if self.multSR == True: # To simulate CVs with multiple scan rates
+            self.multSR = False
+            print(self.multSR)
             nt = self.t.shape[0]
             nsr = np.size(self.sr)
             self.i = np.zeros([nt, nsr])
@@ -331,11 +333,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     ########## Plot solution:
     def btnPlot_clicked(self):
         if self.Et_type == "CV":
-            if self.multSR == True:
-                self.plot(self.E, self.i/np.sqrt(self.sr), xlab="$E$ / V", ylab="$i sr^{-1/2}$ / A s$^{1/2}$ V$^{-1/2}$")
-                plt.show()
-                return
-            self.plot(self.E, self.i, xlab="$E$ / V", ylab="$i/$ / A")
+            #if self.multSR == True:
+            #    self.plot(self.E, self.i, xlab="$E$ / V", ylab="$i$ / A")
+            #    plt.show()
+            #    return
+            self.plot(self.E, self.i, xlab="$E$ / V", ylab="$i$ / A")
         elif self.Et_type == "CA":
             self.plot(self.t, self.i, xlab="$t$ / s", ylab="$i$ / A", marker = "-")
         elif self.Et_type == "SCV":
