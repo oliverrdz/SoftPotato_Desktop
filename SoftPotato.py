@@ -131,6 +131,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.multSR = True
             
         else:
+            self.multSR = False
             sr = float(self.box_sr.text())
             self.t, self.E = wf.sweep(Eini, Efin, sr, dE, ns, tini)
         
@@ -152,6 +153,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     
     ## Chronoamperometry:
     def btnGenCA(self):
+        self.multSR = False
         self.Et_type = "CA"
         Estep = float(self.box_Estep.text())
         ttot = float(self.box_ttot.text())
@@ -185,6 +187,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     
     ## Sampled current voltammetry:
     def btnGenSCV(self):
+        self.multSR = False
         self.Et_type = "SCV"
         Eini = float(self.box_Eini_SCV.text())
         Efin = float(self.box_Efin_SCV.text())
@@ -233,6 +236,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.box_ks.setEnabled(True)
                 self.box_alpha.setEnabled(True)
                 self.bc_type = "BV"
+                print("BV")
     
     def step2Clicked(self):
         if self.check_SecondStep.isChecked():
@@ -295,8 +299,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             return
         
         if self.multSR == True: # To simulate CVs with multiple scan rates
-            self.multSR = False
-            print(self.multSR)
             nt = self.t.shape[0]
             nsr = np.size(self.sr)
             self.i = np.zeros([nt, nsr])
@@ -316,7 +318,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.actionSave_x.setEnabled(False)
             return
             
-            
         self.statusBar().showMessage("Simulating.")
         self.i, self.x, self.cR, self.cO = sol.main(self.t, self.E, self.bc_type, params, CdRu, self.progressBar)
         self.statusBar().showMessage("Simulation finished")
@@ -328,20 +329,17 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.actionSave_O.setEnabled(True)
         self.actionSave_R.setEnabled(True)
         self.actionSave_x.setEnabled(True)
+        self.multSR = False
     
     
     ########## Plot solution:
     def btnPlot_clicked(self):
         if self.Et_type == "CV":
-            #if self.multSR == True:
-            #    self.plot(self.E, self.i, xlab="$E$ / V", ylab="$i$ / A")
-            #    plt.show()
-            #    return
             self.plot(self.E, self.i, xlab="$E$ / V", ylab="$i$ / A")
         elif self.Et_type == "CA":
             self.plot(self.t, self.i, xlab="$t$ / s", ylab="$i$ / A", marker = "-")
         elif self.Et_type == "SCV":
-            self.plot(self.E[-1,:], self.i.T/np.max(self.i.T, axis=0), xlab="$E$ / V", ylab="$i/i_{lim}$", marker = "-")
+            self.plot(self.E[:-1,:].T, self.i[1:,:].T/np.max(self.i[1:,:].T, axis=0), xlab="$E$ / V", ylab="$i/i_{lim}$", marker = "-")
         plt.show()
 
 
