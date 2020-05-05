@@ -26,7 +26,7 @@ FRT = F/(R*T)
 
 
 
-def main(t, E, bc_type, params, CdRu, progressBar):
+def main(t, E, bc_type, params, CdRu, progressBar=0):
     
     n, A, E0, COb, CRb, DO, DR = params[0:7]
         
