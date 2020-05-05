@@ -102,7 +102,7 @@ def bc(bc_type, CR1kb, CO1kb, DOR, dX, eps, kinetic_params):
 
 
 ## Finite differences with only faradaic response:
-def fd(CR, CO, eps, DOR, dX, lamb, bc_type, kinetic_params, progressBar):
+def fd(CR, CO, eps, DOR, dX, lamb, bc_type, kinetic_params, progressBar = 0):
     nT = np.shape(CR)[1]
     nX = np.shape(CR)[0]
     iNorm = np.zeros([nT])
@@ -112,7 +112,8 @@ def fd(CR, CO, eps, DOR, dX, lamb, bc_type, kinetic_params, progressBar):
             CR[i,k] = CR[i,k-1] + lamb*(CR[i+1,k-1] - 2*CR[i,k-1] + CR[i-1,k-1])
             CO[i,k] = CO[i,k-1] + DOR*lamb*(CO[i+1,k-1] - 2*CO[i,k-1] + CO[i-1,k-1])
         iNorm[k] = (CR[1,k] - CR[0,k])/dX # Adimensional current
-        progressBar.setValue(int(100*k/nT))
+        if progressBar != 0:
+            progressBar.setValue(int(100*k/nT))
     return iNorm, CR, CO
 
 
