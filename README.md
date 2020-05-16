@@ -6,7 +6,7 @@ It simulates cyclic voltammograms for planar diffusion. Assumes R - e -> O and B
 # Usage
 Download the repository. From a terminal and within the Soft Potato directory, run:
 ```python
-python3 SP.py 
+python3 SoftPotato.py 
 ```
 
 # Requirements
@@ -26,6 +26,7 @@ pip3 install celluloid
 
 Tested with:
 + OS: PopOs
++ OS: Manjaro (XFCE, KDE)
 
 # Pending:
 + Build executable for Linux/Mac/Windows
