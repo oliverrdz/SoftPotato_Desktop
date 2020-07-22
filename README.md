@@ -29,7 +29,7 @@ Tested with:
 + Windows 10
 
 ## Pending:
-+ Build executable for Mac
++ Build Linux, Mac and Windows binaries
 + Change to an implicit algorithm to improve stability
 + Activate non-faradaic response
 
