@@ -42,5 +42,3 @@ The simulator is based on the "Modelling in Electrochemistry" lectures given by 
 ## Screenshots
 PopOS 20.04LTS:
 ![Screenshot v1.0.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v1.0.0.png?raw=true])
-
-Windows 10:
