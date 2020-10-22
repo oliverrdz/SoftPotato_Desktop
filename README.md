@@ -1,6 +1,6 @@
 # Version 1.1
 
-Script based.
+Soft potato going back to the roots. I am rewriting the main code to make it easier to maintain. I am now trying to use the OOP paradigm. I am also writing Soft Potato in a module way so it can be used as a script. The GUI would just be a complement.
 
 ### Requirements
 It requires:
