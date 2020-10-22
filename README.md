@@ -20,6 +20,7 @@ Tested with:
 + Validation of cyclic voltammetry
 
 ## Log:
++ 22/Oct/2020 - Created Randles-Sevick script to test CV
 + 22/Oct/2020 - Positive or negative sweep
 + 22/Oct/2020 - Both O and R present at t = 0
 
