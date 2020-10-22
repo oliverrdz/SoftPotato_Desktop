@@ -5,10 +5,8 @@ Script based.
 ### Requirements
 It requires:
 + Python 3+
-+ PyQt5
 + Numpy
 + Matplotlib
-+ [celluloid](https://github.com/jwkvam/celluloid)
 
 ```python
 pip3 install numpy
