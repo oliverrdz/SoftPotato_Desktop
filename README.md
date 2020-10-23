@@ -20,9 +20,12 @@ Tested with:
 + Validation of cyclic voltammetry
 
 ## Log:
-+ 22/Oct/2020 - Created Randles-Sevick script to test CV
-+ 22/Oct/2020 - Positive or negative sweep
-+ 22/Oct/2020 - Both O and R present at t = 0
++ 22/Oct/2020
+  + Created CV and waveform scritps for the documentation
+  + Removed extra time point in wf.Construct()
+  + Created Randles-Sevick script to test CV
+  + Positive or negative sweep
+  + Both O and R present at t = 0
 
 ## Contributing
 To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request.
