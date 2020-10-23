@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[version=4]{mhchem}
+\usepackage{physics}
+\usepackage{siunitx} % To use SI units symbols, ohms \si{\ohm}
+\usepackage[caption=false]{subfig} % To use subfigures
+\usepackage{xcolor} % To use colors for comments
+
+\renewcommand{\baselinestretch}{1.5}
+\newcommand{\Oliver}[1]{{\color{red} #1}} %%%% For comments
+
+% To add figures:
+% \figur{FileName}{Caption}{Label}{Size}
+\newcommand{\figur}[4]{
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=#4]{#1}
+\caption{#2}
+\label{#3}
+\end{figure}
+}
+
+
+\title{Soft Potato v1.1.0}
+\author{Oliver Rodr\'iguez}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%
+\section{General usage}
+\subsection{Cyclic voltammetry}
+
+\subsection{Chronoamperometry}
+
+
+%%%%%%%%%%
+\section{Scripting}
+\subsection{Potential waveforms}
+\subsection{Plots}
+
+
+%%%%%%%%%%
+\section{Validation}
+\subsection{Cottrell}
+\subsection{Randles-Sevcik}
+
+
+\end{document}
