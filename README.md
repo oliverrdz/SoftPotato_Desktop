@@ -21,7 +21,7 @@ Tested with:
 
 ## Log:
 + 22/Oct/2020
-  + Created CV and waveform scritps for the documentation
+  + Created CV and waveform scripts for the documentation
   + Removed extra time point in wf.Construct()
   + Created Randles-Sevick script to test CV
   + Positive or negative sweep
