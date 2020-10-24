@@ -1,30 +1,29 @@
 #!/usr/bin/python3
 
-import waveform as wf
-import simulation as sim
+#import numpy as np
 import matplotlib.pyplot as plt
 
-## Create waveform object
-#stp = wf.Step(Estep=0.5, ttot=2)
-swp = wf.Sweep(Eini=0.5, Efin=-0.5, dE=0.005, ns=2)
-wf1 = wf.Construct([swp])
+import waveform as wf
+import spacing as space
+import mechanism as mec
+import simulation as sim
+import plots as p
 
-# Simulate
-sim_FD = sim.FD(wf1, cOb=1e-6, cRb=0)
-#sim_BI = sim.BI(wf1)
 
+##### Create waveform object
+swp = wf.Sweep()
+
+##### Equal spacing:
+spc = space.Equal(swp) # Spacing
+
+##### E mechanism:
+Emec = mec.E(swp, spc)
+
+##### Simulation:
+sim_FD = sim.Simulate(swp, spc, Emec, Ageo=1)
+
+##### Plots:
 plt.figure(1)
-plt.plot(wf1.t, wf1.E)
-plt.xlabel("$t$ / s")
-plt.ylabel("$E$ / V")
-plt.grid()
-
-plt.figure(2)
-plt.plot(sim_FD.E, sim_FD.i*1e3, label="FD")
-#plt.plot(sim_BI.E, sim_BI.i*1e3, label="BI")
-plt.xlabel("$E$ / V")
-plt.ylabel("$i$ / mA")
-plt.legend()
-plt.grid()
+p.plot(sim_FD.E, sim_FD.i*1e3, "$E$ / V", "$i$ / mA")
 
 plt.show()
