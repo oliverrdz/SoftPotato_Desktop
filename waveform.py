@@ -2,11 +2,9 @@
 
 import numpy as np
 
-
-
 class Sweep:
 
-    def __init__(self, Eini = -0.5, Efin = 0.5, sr = 1, dE = 0.01, ns = 2, tini = 0):
+    def __init__(self, Eini = 0.5, Efin = -0.5, sr = 1, dE = 0.005, ns = 2, tini = 0):
         Ewin = abs(Efin-Eini)
         tsw = Ewin/sr # total time for one sweep
         nt = int(Ewin/dE)
