@@ -20,6 +20,10 @@ Tested with:
 + Validation of cyclic voltammetry
 
 ## Log:
++ 24/Oct/2020
+  + Made spacing, mechanism and simulation into separate classes
+  + Created plots funcition
+
 + 22/Oct/2020
   + Created CV and waveform scripts for the documentation
   + Removed extra time point in wf.Construct()
