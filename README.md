@@ -20,6 +20,9 @@ Tested with:
 + Validation of cyclic voltammetry
 
 ## Log:
++ 22/Nov/2020
+  + Created softpotato.py and added OOP, this way the user only needs to import sofpotato as sp
+  + See scriptSP.py for an exampled
 + 24/Oct/2020
   + Made spacing, mechanism and simulation into separate classes
   + Created plots funcition
