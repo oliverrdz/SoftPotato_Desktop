@@ -45,3 +45,7 @@ class E:
             self.CO[k,j] = self.CO[k-1,j] + self.DOR*self.lamb*(self.CO[k-1,j+1] - 2*self.CO[k-1,j] + self.CO[k-1,j-1])
         
         
+    def BI(self, k, CR1kb, CO1kb, eps): # Backwards implicit
+        
+        self.CR = 0
+        self.CO = 0

@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import waveform as wf
 import spacing as space
 import mechanism as mec
+import algorithm as alg
 import simulation as sim
 import plots as p
 
@@ -18,6 +19,8 @@ spc = space.Equal(swp) # Spacing
 
 ##### E mechanism:
 Emec = mec.E(swp, spc)
+
+#Emec = alg.FD(swp, spc)
 
 ##### Simulation:
 sim_FD = sim.Simulate(swp, spc, Emec, Ageo=1)
