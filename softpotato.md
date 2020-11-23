@@ -11,6 +11,7 @@ Main script to test: script.SP.py
 ## Pending
 
 + In classes Sweep, Step and Construct remove tini
++ Try inheritance in the classes
 
 
 ## Log
