@@ -24,7 +24,6 @@ class Sweep:
     sr:     V/s, scan rate (1 V/s)
     dE:     V, potential increments (0.01 V)
     ns:     number of sweeps (2)
-    tini:   s, initial time for the sweep (0 s)
     
     Returns
     -------
@@ -40,13 +39,13 @@ class Sweep:
         
     """
 
-    def __init__(self, Eini = 0.5, Efin = -0.5, sr = 1, dE = 0.005, ns = 2, tini = 0):
+    def __init__(self, Eini = 0.5, Efin = -0.5, sr = 1, dE = 0.005, ns = 2):
         Ewin = abs(Efin-Eini)
         tsw = Ewin/sr # total time for one sweep
         nt = int(Ewin/dE)
 
         E = np.array([])
-        t = np.linspace(tini, tini+tsw*ns, nt*ns)
+        t = np.linspace(0, tsw*ns, nt*ns)
 
         for n in range(1, ns+1):
             if (n%2 == 1):
@@ -68,7 +67,6 @@ class Step:
     Parameters
     ----------
     Estep:  V, potential step in V (0.5 V)
-    tini:   s, initial time for step (0 s)
     ttot:   s, total time of the step (1 s)
     dt:     s, time increment (0.01 s)
     
@@ -86,12 +84,11 @@ class Step:
     Returns t and E calculated with the parameters given
     """
 
-    def __init__(self, Estep = 0.5, tini = 0, ttot = 1, dt = 0.01):
+    def __init__(self, Estep = 0.5, ttot = 1, dt = 0.01):
         nt = int(ttot/dt)
-        tfin = tini + ttot
 
         self.E = np.ones([nt])*Estep
-        self.t = np.linspace(tini, tfin, nt)
+        self.t = np.linspace(0, ttot, nt)
 
 
 
@@ -246,14 +243,17 @@ class Simulate:
 
             self.denorm()
 
-    def denorm(self): # Denormalisation
+    def denorm(self): # Denormalisation, I believe this can be optimised
         
         if self.mec.cRb:
             I = -self.CR[:,2] + 4*self.CR[:,1] - 3*self.CR[:,0]
             D = self.mec.DR
             c = self.mec.cRb
             cR = self.CR*self.mec.cRb
-            cO = self.CO*self.mec.cOb
+            if self.mec.cOb:
+                cO = self.CO*self.mec.cOb
+            else: # In case only R present in solution
+                cO = (1-self.CR)*self.mec.cRb
         else: # In case only O present in solution
             I = self.CO[:,2] - 4*self.CO[:,1] + 3*self.CO[:,0]
             D = self.mec.DO
@@ -261,9 +261,6 @@ class Simulate:
             cO = self.CO*self.mec.cOb
             cR = (1-self.CO)*self.mec.cOb
         i = self.mec.n*F*self.Ageo*D*c*I/(2*self.space.dX*self.mec.delta)
-
-        #cR = self.CR*self.mec.cRb
-        #cO = self.CO*self.mec.cOb
         x = self.space.X*self.mec.delta
 
         self.E = self.wf.E
@@ -280,9 +277,9 @@ class Plot_all:
         plt.subplot(221)
         Plot(sim.t, sim.E, "$t$ / s", "$E$ / V")
         plt.subplot(222)
-        Plot(sim.E, sim.i*1e3, "$E$ / V", "$i$ / mA")
+        Plot(sim.E, sim.i, "$E$ / V", "$i$ / A")
         plt.subplot(223)
-        Plot(sim.t, sim.i*1e3, "$t$ / s", "$i$ / mA")
+        Plot(sim.t, sim.i, "$t$ / s", "$i$ / A")
         plt.subplot(224)
         Plot2(sim.x, sim.cR[-1,:], sim.x, sim.cO[-1,:], "$x$ / cm", "$c$ / mol cm$^{-3}$", "$c_R$", "$c_O$")
         plt.show()
@@ -294,8 +291,6 @@ class Plot:
         plt.xlabel(xlab, fontsize=18)
         plt.ylabel(ylab, fontsize=18)
         Plot_format()
-        #plt.show()
-
 class Plot2:
     def __init__(self, x1, y1, x2, y2, xlab, ylab, lab1, lab2, mark1="-", mark2="-"):
         plt.plot(x1, y1, mark1, label=lab1)
@@ -304,7 +299,6 @@ class Plot2:
         plt.ylabel(ylab, fontsize=18)
         plt.legend()
         Plot_format()
-        #plt.show()
 
 class Plot_format:
     def __init__(self):
