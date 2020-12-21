@@ -3,6 +3,10 @@ Open source electrochemistry simulator, now with a graphical interface!
 
 It simulates cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics as well as nerstian response. For more information visit [https://oliverrdz.xyz](https://oliverrdz.xyz/?page_id=143).
 
+## Binaries
+There are Windows 10 and Ubuntu binaries in the [releases page](https://github.com/oliverrdz/SoftPotato/releases/tag/v1.0.0).
+
+
 ## Usage
 Download the repository. From a terminal and within the Soft Potato directory, run:
 ```python
@@ -29,7 +33,6 @@ Tested with:
 + Windows 10
 
 ## Pending:
-+ Build Linux, Mac and Windows binaries
 + Change to an implicit algorithm to improve stability
 + Activate non-faradaic response
 
