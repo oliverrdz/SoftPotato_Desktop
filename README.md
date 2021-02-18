@@ -1,14 +1,14 @@
 # Soft Potato wiki
 Open source electrochemistry simulator, now with a graphical interface!
 
-It simulates cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics as well as nerstian response. For more information visit [https://oliverrdz.xyz](https://oliverrdz.xyz/?page_id=143).
+It simulates cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit [https://oliverrdz.xyz/soft-potato](https://oliverrdz.xyz/soft-potato).
 
 ## Binaries
-There are Windows 10 and Ubuntu binaries in the [releases page](https://github.com/oliverrdz/SoftPotato/releases/tag/v1.0.0).
+There are Windows 8.1 and Ubuntu 20.10 binaries in the [releases page](https://github.com/oliverrdz/SoftPotato/releases/tag/v2.0).
 
 
 ## Usage
-Download the repository. From a terminal and within the Soft Potato directory, run:
+For regular use, download the binary for your system. If you want to tinker with the code, then download the repository. From a terminal and within the Soft Potato directory, run:
 ```python
 python3 SoftPotato.py
 ```
@@ -19,22 +19,18 @@ It requires:
 + PyQt5
 + Numpy
 + Matplotlib
-+ [celluloid](https://github.com/jwkvam/celluloid)
++ PyQTGraph
 
 ```python
 pip3 install numpy
 pip3 install matplotlib
 pip3 install pyqt5
-pip3 install celluloid
+pip3 install pyqtgraph
 ```
 
 Tested with:
-+ Linux (PopOs 20.04LTS)
-+ Windows 10
-
-## Pending:
-+ Change to an implicit algorithm to improve stability
-+ Activate non-faradaic response
++ Linux (PopOs/Ubuntu 20.10)
++ Windows 8.1
 
 ## Contributing
 To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request.
@@ -44,4 +40,4 @@ The simulator is based on the "Modelling in Electrochemistry" lectures given by 
 
 ## Screenshots
 PopOS 20.04LTS:
-![Screenshot v1.0.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v1.0.0.png?raw=true])
+![Screenshot v2.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v2.0.png?raw=true])
