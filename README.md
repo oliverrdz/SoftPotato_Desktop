@@ -4,7 +4,7 @@ Open source electrochemistry simulator, now with a graphical interface!
 It simulates cyclic voltammograms for planar diffusion. Assumes R - e -> O and Butler-Volmer kinetics. For more information visit [https://oliverrdz.xyz/soft-potato](https://oliverrdz.xyz/soft-potato).
 
 ## Binaries
-There are Windows 8.1 and Ubuntu 20.10 binaries in the [releases page](https://github.com/oliverrdz/SoftPotato/releases/tag/v2.0).
+There are Windows 8.1 and Ubuntu 20.10 binaries in the [releases page](https://github.com/oliverrdz/SoftPotato/releases).
 
 
 ## Usage
@@ -40,4 +40,6 @@ The simulator is based on the "Modelling in Electrochemistry" lectures given by 
 
 ## Screenshots
 PopOS 20.10:
-![Screenshot v2.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v2.0.png?raw=true])
+![Screenshot v2.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v2.0_popOS.png?raw=true])
+Windows 8.1:
+![Screenshot_v2,0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v2.0_Win.png?raw=true])
