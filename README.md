@@ -39,5 +39,5 @@ To report bugs, make suggestions or comments or collaborations, please contact m
 The simulator is based on the "Modelling in Electrochemistry" lectures given by [Dr. Guy Denuault](https://www.southampton.ac.uk/chemistry/about/staff/gd.page).
 
 ## Screenshots
-PopOS 20.04LTS:
+PopOS 20.10:
 ![Screenshot v2.0](https://github.com/oliverrdz/SoftPotato/blob/master/Figs/SP_v2.0.png?raw=true])
