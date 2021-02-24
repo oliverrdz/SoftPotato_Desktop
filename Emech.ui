@@ -93,7 +93,7 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_11">
         <property name="text">
-         <string>Diffusion concentration of O</string>
+         <string>Diffusion coefficient of O</string>
         </property>
        </widget>
       </item>
@@ -149,7 +149,7 @@
       <item row="5" column="0">
        <widget class="QLabel" name="label_13">
         <property name="text">
-         <string>Diffusion concentration of R</string>
+         <string>Diffusion coefficient of R</string>
         </property>
        </widget>
       </item>
