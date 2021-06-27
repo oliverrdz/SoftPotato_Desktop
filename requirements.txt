@@ -1,0 +1,8 @@
+numpy==1.21.0
+PyOpenGL==3.1.5
+PyQt5==5.15.4
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.9.0
+pyqtgraph==0.12.1
+QtPy==1.9.0
+vispy==0.4.0
