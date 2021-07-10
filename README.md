@@ -29,7 +29,7 @@ pip3 install pyqtgraph
 ```
 
 Tested with:
-+ Linux (PopOs/Ubuntu 20.10)
++ Linux (PopOs/Ubuntu 20.10/Manjaro)
 + Windows 8.1
 
 ## Contributing
