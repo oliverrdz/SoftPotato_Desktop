@@ -32,7 +32,7 @@ Optional for compiling with cython, see below
 + Cython
 ```python
 pip3 install Cython
-
+```
 
 Tested with:
 + Linux (PopOs/Ubuntu 20.10/Manjaro)
