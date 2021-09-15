@@ -28,9 +28,23 @@ pip3 install pyqt5
 pip3 install pyqtgraph
 ```
 
+Optional for compiling with cython, see below
++ Cython
+```python
+pip3 install Cython
+´´´
+
 Tested with:
 + Linux (PopOs/Ubuntu 20.10/Manjaro)
 + Windows 8.1
++ MacOS Catalina
+
+### Compiling with Cython
+The code can be made around 30% faster by cythonizing the main sp.py module.
+This will particularly help speed up the calculation of finite-differences.
+To compile to code install first Cython and then run the command
+
+python3 setup.py build_ext --inplace
 
 ## Contributing
 To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request.
