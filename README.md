@@ -44,7 +44,9 @@ The code can be made around 30% faster by cythonizing the main sp.py module.
 This will particularly help speed up the calculation of finite-differences.
 To compile to code install first Cython and then run the command
 
+```python
 python3 setup.py build_ext --inplace
+```
 
 ## Contributing
 To report bugs, make suggestions or comments or collaborations, please contact me on [Twitter](https://twitter.com/ol1v3r) or create a pull request.
