@@ -1,7 +1,7 @@
 # Soft Potato wiki
 Open source electrochemistry simulator.
 
-It simulates cyclic voltammograms and chronoamperograms for planar diffusion assuming Butler-Volmer kinetics. Make sure to use the slide bar at the bottom! For more information visit [https://oliverrdz.xyz/soft-potato](https://oliverrdz.xyz/soft-potato).
+It simulates cyclic voltammograms and chronoamperograms for planar diffusion assuming Butler-Volmer kinetics. Make sure to use the slide bar at the bottom! For more information visit [https://softpotato.xyz](https://softpotato.xyz).
 
 ## Binaries
 There are Windows 8.1 and Ubuntu 20.10 binaries in the [releases page](https://github.com/oliverrdz/SoftPotato/releases). Make sure to download the latest release available for your system.
